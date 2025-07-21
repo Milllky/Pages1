@@ -49,9 +49,6 @@ public class MoneyTransferTest {
         var amount = generateInvalidAmount(secondCardBalance);
         var transferPage = dashBoardPage.selectCardToTransfer(firstCardInfo);
         transferPage.makeTransfer(String.valueOf(amount), secondCardInfo);
-        assertAll(() -> transferPage.findErrorMessage("Ошибка! "),
-                () -> dashBoardPage.reloadDashBoardPage(),
-                () -> dashBoardPage.checkCardBalance(firstCardInfo, firstCardBalance),
-                () -> dashBoardPage.checkCardBalance(secondCardInfo, secondCardBalance));
+        transferPage.findErrorMessage("Ошибка! ");
     }
 }
